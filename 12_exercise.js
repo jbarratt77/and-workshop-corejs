@@ -17,7 +17,7 @@
  */
 
 function filter(candidates, filters) {
-  const out = [];
+  const filteredCandidates = [];
   let hasOptions;
   let availableImmediately = false;
   let freshGrad = false;
@@ -59,11 +59,11 @@ function filter(candidates, filters) {
       }
     }
     if (hasOptions) {
-      out.unshift(candidates[i]);
+      filteredCandidates.unshift(candidates[i]);
     }
   }
 
-  return out;
+  return filteredCandidates;
 }
 
 module.exports = filter;
