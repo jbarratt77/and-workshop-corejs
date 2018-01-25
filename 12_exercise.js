@@ -18,13 +18,11 @@
 
 function filter(candidates, filters) {
   var out = [];
-
-  var filterLength = filters.length;
   var hasOptions;
   var availableImmediately = false;
   var freshGrad = false;
 
-  if (filterLength === 0) {
+  if (filters.length === 0) {
     return candidates;
   }
 
@@ -37,7 +35,7 @@ function filter(candidates, filters) {
   for (var i = candidates.length; i--; ) {
     hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
     if (candidates[i].options) {
-      for (var k = filterLength; k--; ) {
+      for (var k = filters.length; k--; ) {
         // loop through filters
         var hasFilter = false;
         for (var j = candidates[i].options.length; j--; ) {
