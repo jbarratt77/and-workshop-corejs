@@ -39,18 +39,19 @@ function filter(candidates, filters) {
         // loop through filters
         let hasFilter = false;
         for (let j = candidates[i].options.length; j--; ) {
+          const candidateOption = candidates[i].options[j].code;
           if (!availableImmediately && !freshGrad) {
-            if (filters[k] == candidates[i].options[j].code) {
+            if (filters[k] == candidateOption) {
               hasFilter = true;
             }
           } else if (
             availableImmediately &&
-            candidates[i].options[j].code === 'AVAILABLE_IMMEDIATELY'
+            candidateOption === 'AVAILABLE_IMMEDIATELY'
           ) {
             hasFilter = true;
           } else if (
             freshGrad &&
-            candidates[i].options[j].code === 'FRESH_GRAD'
+            candidateOption === 'FRESH_GRAD'
           ) {
             hasFilter = true;
           }
