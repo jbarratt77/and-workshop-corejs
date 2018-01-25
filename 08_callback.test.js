@@ -5,9 +5,9 @@ describe('About Higher Order Functions', function() {
       return x % 2 !== 0;
     });
 
-    expect(odd).toEqual(/* 🤔 */);
-    expect(odd.length).toBe(/* 🤔 */);
-    expect(numbers.length).toBe(/* 🤔 */);
+    expect(odd).toEqual([1, 3]);
+    expect(odd.length).toBe(2);
+    expect(numbers.length).toBe(3);
   });
 
   it("should use 'map' to transform each element", function() {
@@ -16,8 +16,8 @@ describe('About Higher Order Functions', function() {
       return x + 1;
     });
 
-    expect(numbersPlus1).toEqual(/* 🤔 */);
-    expect(numbers).toEqual(/* 🤔 */);
+    expect(numbersPlus1).toEqual([2,3,4]);
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'reduce' to update the same result on each iteration", function() {
@@ -30,21 +30,21 @@ describe('About Higher Order Functions', function() {
     },
     /* initial */ 0);
 
-    expect(reduction).toBe(/* 🤔 */);
-    expect(numbers).toEqual(/* 🤔 */);
+    expect(reduction).toBe(6);
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'forEach' for simple iteration", function() {
     const numbers = [1, 2, 3];
-    const msg = '';
+    let msg = '';
     const isEven = function(item) {
       msg += item % 2 === 0;
     };
 
     numbers.forEach(isEven);
 
-    expect(msg).toEqual(/* 🤔 */);
-    expect(numbers).toEqual(/* 🤔 */);
+    expect(msg).toEqual('falsetruefalse');
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it('should use every to test whether all items pass condition', function() {
@@ -56,8 +56,8 @@ describe('About Higher Order Functions', function() {
       return x % 2 === 0;
     };
 
-    expect(onlyEven.xxx(isEven)).toBe(/* 🤔 */);
-    expect(mixedBag.xxx(isEven)).toBe(/* 🤔 */);
+    expect(onlyEven.every(isEven)).toBe(true);
+    expect(mixedBag.every(isEven)).toBe(false);
   });
 
   it("should use 'some' to test if any items passes condition", function() {
@@ -69,8 +69,8 @@ describe('About Higher Order Functions', function() {
       return x % 2 === 0;
     };
 
-    expect(onlyEven.xxx(isEven)).toBe(/* 🤔 */);
-    expect(mixedBag.xxx(isEven)).toBe(/* 🤔 */);
+    expect(onlyEven.some(isEven)).toBe(true);
+    expect(mixedBag.some(isEven)).toBe(true);
   });
 
   it('use multiple higher order functions', function() {
@@ -82,6 +82,6 @@ describe('About Higher Order Functions', function() {
         return sum + x;
       });
 
-    expect(result).toEqual(/* 🤔 */);
+    expect(result).toEqual(6);
   });
 });
