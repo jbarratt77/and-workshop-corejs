@@ -17,10 +17,10 @@
  */
 
 function filter(candidates, filters) {
-  var out = [];
-  var hasOptions;
-  var availableImmediately = false;
-  var freshGrad = false;
+  const out = [];
+  let hasOptions;
+  let availableImmediately = false;
+  let freshGrad = false;
 
   if (filters.length === 0) {
     return candidates;
