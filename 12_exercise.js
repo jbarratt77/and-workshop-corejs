@@ -32,13 +32,13 @@ function filter(candidates, filters) {
     freshGrad = true;
   }
 
-  for (var i = candidates.length; i--; ) {
+  for (let i = candidates.length; i--; ) {
     hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
     if (candidates[i].options) {
-      for (var k = filters.length; k--; ) {
+      for (let k = filters.length; k--; ) {
         // loop through filters
         var hasFilter = false;
-        for (var j = candidates[i].options.length; j--; ) {
+        for (let j = candidates[i].options.length; j--; ) {
           if (!availableImmediately && !freshGrad) {
             if (filters[k] == candidates[i].options[j].code) {
               hasFilter = true;
