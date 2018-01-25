@@ -37,7 +37,7 @@ function filter(candidates, filters) {
     if (candidates[i].options) {
       for (let k = filters.length; k--; ) {
         // loop through filters
-        var hasFilter = false;
+        let hasFilter = false;
         for (let j = candidates[i].options.length; j--; ) {
           if (!availableImmediately && !freshGrad) {
             if (filters[k] == candidates[i].options[j].code) {
