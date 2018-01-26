@@ -17,50 +17,20 @@
  */
 
 function filter(allCandidates, filters) {
-  const filteredCandidates = [];
-  let hasOptions;
-  let availableImmediately = false;
-  let freshGrad = false;
+  function hasOptionCode(candidate, filter) {
+    return candidate.options.some((option) => filter === option.code);
+  };
 
   if (filters.length === 0) {
     return allCandidates;
-  }
-
-  if (filters.includes('AVAILABLE_IMMEDIATELY')) {
-    availableImmediately = true;
+  } else if (filters.includes('AVAILABLE_IMMEDIATELY')) {
+    return allCandidates.filter((candidate) => hasOptionCode(candidate, 'AVAILABLE_IMMEDIATELY'));
   } else if (filters.includes('FRESH_GRAD')) {
-    freshGrad = true;
+    return allCandidates.filter((candidate) => hasOptionCode(candidate, 'FRESH_GRAD'));
+  } else {
+    return allCandidates.filter((candidate) => filters.every((filter) => hasOptionCode(candidate, filter)));
   }
 
-  allCandidates.forEach((candidate) => {
-    hasOptions = candidate.options.length > 0; //has.options
-    if (hasOptions) {
-      filters.forEach((filter) => {
-        // loop through filters
-        let hasFilter = false;
-        candidate.options.forEach((option) => {
-          switch (true) {
-            case !availableImmediately && !freshGrad && filter == option.code:
-              hasFilter = true;
-            break;
-            case availableImmediately && option.code === 'AVAILABLE_IMMEDIATELY':
-              hasFilter = true;
-            break;
-            case freshGrad && option.code === 'FRESH_GRAD':
-              hasFilter = true;
-            break;
-            default:
-            break;
-          }
-        });
-        hasOptions = hasOptions && hasFilter;
-      });
-    }
-    if (hasOptions) {
-      filteredCandidates.push(candidate);
-    }
-  });
-   return filteredCandidates;
 }
 
 module.exports = filter;
