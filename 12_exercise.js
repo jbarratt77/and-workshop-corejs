@@ -32,7 +32,7 @@ function filter(candidates, filters) {
     freshGrad = true;
   }
 
-  candidates.forEach(function(candidate) {
+  candidates.forEach((candidate) => {
     hasOptions = candidate.options && candidate.options.length > 0; //has.options
     if (candidate.options) {
       for (let k = filters.length; k--; ) {
