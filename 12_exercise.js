@@ -16,14 +16,14 @@
  *   happy refactory :)
  */
 
-function filter(candidates, filters) {
+function filter(allCandidates, filters) {
   const filteredCandidates = [];
   let hasOptions;
   let availableImmediately = false;
   let freshGrad = false;
 
   if (filters.length === 0) {
-    return candidates;
+    return allCandidates;
   }
 
   if (filters.includes('AVAILABLE_IMMEDIATELY')) {
@@ -32,7 +32,7 @@ function filter(candidates, filters) {
     freshGrad = true;
   }
 
-  candidates.forEach((candidate) => {
+  allCandidates.forEach((candidate) => {
     hasOptions = candidate.options && candidate.options.length > 0; //has.options
     if (candidate.options) {
       filters.forEach((filter) => {
