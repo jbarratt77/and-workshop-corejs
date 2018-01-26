@@ -33,7 +33,7 @@ function filter(allCandidates, filters) {
   }
 
   allCandidates.forEach((candidate) => {
-    hasOptions = candidate.options && candidate.options.length > 0; //has.options
+    hasOptions = candidate.options.length > 0; //has.options
     if (candidate.options) {
       filters.forEach((filter) => {
         // loop through filters
