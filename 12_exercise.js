@@ -38,24 +38,23 @@ function filter(candidates, filters) {
       filters.forEach((filter) => {
         // loop through filters
         let hasFilter = false;
-        for (let j = candidate.options.length; j--; ) {
-          const candidateOption = candidate.options[j].code;
+        candidate.options.forEach((option) => {
           if (!availableImmediately && !freshGrad) {
-            if (filter == candidateOption) {
+            if (filter == option.code) {
               hasFilter = true;
             }
           } else if (
             availableImmediately &&
-            candidateOption === 'AVAILABLE_IMMEDIATELY'
+            option.code === 'AVAILABLE_IMMEDIATELY'
           ) {
             hasFilter = true;
           } else if (
             freshGrad &&
-            candidateOption === 'FRESH_GRAD'
+            option.code === 'FRESH_GRAD'
           ) {
             hasFilter = true;
           }
-        }
+        });
         hasOptions = hasOptions && hasFilter;
       });
     }
