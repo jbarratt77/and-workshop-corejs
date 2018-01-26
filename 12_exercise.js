@@ -39,20 +39,18 @@ function filter(candidates, filters) {
         // loop through filters
         let hasFilter = false;
         candidate.options.forEach((option) => {
-          if (!availableImmediately && !freshGrad) {
-            if (filter == option.code) {
+          switch (true) {
+            case !availableImmediately && !freshGrad && filter == option.code:
               hasFilter = true;
-            }
-          } else if (
-            availableImmediately &&
-            option.code === 'AVAILABLE_IMMEDIATELY'
-          ) {
-            hasFilter = true;
-          } else if (
-            freshGrad &&
-            option.code === 'FRESH_GRAD'
-          ) {
-            hasFilter = true;
+            break;
+            case availableImmediately && option.code === 'AVAILABLE_IMMEDIATELY':
+              hasFilter = true;
+            break;
+            case freshGrad && option.code === 'FRESH_GRAD':
+              hasFilter = true;
+            break;
+            default:
+            break;
           }
         });
         hasOptions = hasOptions && hasFilter;
