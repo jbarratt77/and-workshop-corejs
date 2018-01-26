@@ -32,14 +32,14 @@ function filter(candidates, filters) {
     freshGrad = true;
   }
 
-  for (let i = candidates.length; i--; ) {
-    hasOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
-    if (candidates[i].options) {
+  candidates.forEach(function(candidate) {
+    hasOptions = candidate.options && candidate.options.length > 0; //has.options
+    if (candidate.options) {
       for (let k = filters.length; k--; ) {
         // loop through filters
         let hasFilter = false;
-        for (let j = candidates[i].options.length; j--; ) {
-          const candidateOption = candidates[i].options[j].code;
+        for (let j = candidate.options.length; j--; ) {
+          const candidateOption = candidate.options[j].code;
           if (!availableImmediately && !freshGrad) {
             if (filters[k] == candidateOption) {
               hasFilter = true;
@@ -60,11 +60,10 @@ function filter(candidates, filters) {
       }
     }
     if (hasOptions) {
-      filteredCandidates.unshift(candidates[i]);
+      filteredCandidates.push(candidate);
     }
-  }
-
-  return filteredCandidates;
+  });
+   return filteredCandidates;
 }
 
 module.exports = filter;
