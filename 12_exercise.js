@@ -35,13 +35,13 @@ function filter(candidates, filters) {
   candidates.forEach((candidate) => {
     hasOptions = candidate.options && candidate.options.length > 0; //has.options
     if (candidate.options) {
-      for (let k = filters.length; k--; ) {
+      filters.forEach((filter) => {
         // loop through filters
         let hasFilter = false;
         for (let j = candidate.options.length; j--; ) {
           const candidateOption = candidate.options[j].code;
           if (!availableImmediately && !freshGrad) {
-            if (filters[k] == candidateOption) {
+            if (filter == candidateOption) {
               hasFilter = true;
             }
           } else if (
@@ -57,7 +57,7 @@ function filter(candidates, filters) {
           }
         }
         hasOptions = hasOptions && hasFilter;
-      }
+      });
     }
     if (hasOptions) {
       filteredCandidates.push(candidate);
